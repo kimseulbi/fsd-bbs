@@ -26,13 +26,14 @@ export default class LoginForm extends React.Component {
     return (
       // 아무 의미 없는 코드 <> === React.Fragment 값은 의미
       <React.Fragment>
-        <from onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <h1>로그인</h1>
-          <input type="text" name="username" />
-          <input type="password" name="password" />
+          <input ref={this.usernameRef} type="text" name="username" />
+          <input ref={this.passwordRef} type="password" name="password" />
+
           <button>로그인</button>
-        </from>
-        <button onClick={() => onRegister()}>회원가입</button>
+        </form>
+        <button onClick={() => onRegister()}>회원 가입</button>
       </React.Fragment>
     );
   }

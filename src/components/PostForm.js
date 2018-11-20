@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // 새글, 수정 하는 폼
+// defaultValue에 다른 값을 또 넣어주기 
 export default class PostForm extends Component {
   render() {
     return (

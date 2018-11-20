@@ -4,7 +4,8 @@ import api from "../api";
 export default class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
+    // const username = e.target.elements.username.value
+    // from UI를 사용 하지 않는 경우 에 Ref를 사용 한다.
     this.usernameRef = React.createRef();
     this.passwordRef = React.createRef();
   }

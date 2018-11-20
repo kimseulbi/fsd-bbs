@@ -1,34 +1,37 @@
-import React, { Component } from 'react'
-import api from '../api';
+import React, { Component } from "react";
+import api from "../api";
 
 export default class PostList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       posts: [],
       loading: false
-    }
+    };
   }
-// 비동기 일지라도 기다려주지 않음
+  // 비동기 일지라도 기다려주지 않음
   async componentDidMount() {
-    const res = await api.get('/posts')
+    const res = await api.get("/posts");
     this.setState({
       posts: res.data
-    })
+    });
   }
 
   render() {
-    const { posts } = this.state
+    const { posts } = this.state;
+    const { onPostDetailPage } = this.props;
     return (
       <div>
         <h1>게시물 목록</h1>
         <ul>
           {posts.map(post => (
-            <li key={post.id}>{post.title}</li>
+            <li key={post.id} onClick={() => onPostDetailPage(post.id)}>
+              {post.title}
+            </li>
           ))}
         </ul>
       </div>
-    )
+    );
   }
 }

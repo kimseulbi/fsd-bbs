@@ -1,5 +1,5 @@
 import React from "react";
-import api from "../api";
+import {UserConsumer} from "../contexts/UserContext";
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -10,24 +10,19 @@ export default class LoginForm extends React.Component {
     this.passwordRef = React.createRef();
   }
 
-  async handleSubmit(e) {
-    e.preventDefault();
-    // current 속성을 통해 해당 노드에 접근할 수 있게 됩니다.
-    const username = this.usernameRef.current.value;
-    const password = e.target.elements.password.value;
-    const res = await api.post("/users/login", {
-      username,
-      password
-    });
-    localStorage.setItem("token", res.data.token);
-    // TODO: 게시글 목록 보여주기
-  }
+  // 아무 의미 없는 코드 <> === React.Fragment 값은 의미
   render() {
     const { onRegister } = this.props;
     return (
-      // 아무 의미 없는 코드 <> === React.Fragment 값은 의미
-      <React.Fragment>
-        <form onSubmit={e => this.handleSubmit(e)}>
+      <UserConsumer>
+        {({login}) => (      
+        <React.Fragment>
+        <form onSubmit={e => {
+          e.preventDefault()
+          const username = e.target.elements.username.value
+          const password = e.target.elements.password.value
+          login(username,password)
+        }}>
           <h1>로그인</h1>
           <input ref={this.usernameRef} type="text" name="username" />
           <input ref={this.passwordRef} type="password" name="password" />
@@ -36,6 +31,8 @@ export default class LoginForm extends React.Component {
         </form>
         <button onClick={() => onRegister()}>회원 가입</button>
       </React.Fragment>
+        )}
+      </UserConsumer>
     );
   }
 }

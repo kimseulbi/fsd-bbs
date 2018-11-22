@@ -7,6 +7,7 @@ export default class Layout extends Component {
     return (
       <div>
         <div className="header">
+            헤더
             <UserConsumer>
                 {({ username }) => <div>{username}</div>}
             </UserConsumer>

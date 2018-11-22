@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../api";
+import Layout from "./Layout";
 
 export default class PostList extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class PostList extends Component {
     const { posts } = this.state;
     const { onPostDetailPage, onNewPostFormPage} = this.props;
     return (
-      <div>
+      <Layout title="게시물 목록">
         <button onClick={() => onNewPostFormPage()}>새 글 쓰기</button>
         <h1>게시물 목록</h1>
         <ul>
@@ -32,7 +33,7 @@ export default class PostList extends Component {
             </li>
           ))}
         </ul>
-      </div>
+      </Layout>
     );
   }
 }

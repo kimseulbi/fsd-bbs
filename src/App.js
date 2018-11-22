@@ -20,7 +20,7 @@ class App extends Component {
     // page === 'post-list' -> 게시물 목록 페이지
     // page === 'post-detail' -> 게시물 세부 페이지
     // page === 'new-post-form' -> 새 글쓰기 페이지
-    // page === 'edit-post-form' -> 새 글쓰기 페이지
+    // page === 'edit-post-form' -> 글쓰기 수정 페이지
     this.state = {
       page: "post-list",
       //현재 보고있는 게시물 ID

@@ -12,6 +12,7 @@ export default class LoginForm extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
+    // current 속성을 통해 해당 노드에 접근할 수 있게 됩니다.
     const username = this.usernameRef.current.value;
     const password = e.target.elements.password.value;
     const res = await api.post("/users/login", {

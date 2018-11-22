@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../api";
+import Layout from "./Layout";
 
 export default class PostDetail extends Component {
   constructor(props) {
@@ -26,12 +27,12 @@ export default class PostDetail extends Component {
     const { title, body } = this.state;
     const { postId,onEditPostFormPage } = this.props;
     return (
-      <div>
+      <Layout title={title}>
         <h1>게시물</h1>
         <button onClick={()=>onEditPostFormPage(postId)}>수정</button>
         <p>{title}</p>
         <div>{body}</div>
-      </div>
+      </Layout>
     );
   }
 }

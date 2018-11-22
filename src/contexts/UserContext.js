@@ -29,6 +29,7 @@ export default class UserProvider extends Component {
     localStorage.setItem("token", res.data.token);
     await this.refreshUser();
     // TODO: 게시글 목록 보여주기
+    this.props.onPostListPage()
   }
 
   logout(){

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import api from "../api";
 
 const { Provider, Consumer } = React.createContext();
-
+// 횡단 관심사 
 export default class UserProvider extends Component {
   constructor(props) {
     super(props);
@@ -59,4 +59,22 @@ export default class UserProvider extends Component {
   }
 }
 
-export { UserProvider, Consumer as UserConsumer };
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || "Component";
+}
+
+// 함수로 만들어준것? 
+// with를 써주는게 관례
+ function withUser(WrappedComponent) {
+  function WithUser(props) {
+     return (
+     <Consumer>
+         {value => <WrappedComponent {...value} {...props} />}
+       </Consumer>
+     )
+   }
+   WithUser.displayName = `withUser(${getDisplayName(WrappedComponent)})`;
+   return WithUser;
+ }
+
+export { UserProvider, Consumer as UserConsumer, withUser };

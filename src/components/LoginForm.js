@@ -1,5 +1,5 @@
 import React from "react";
-import { UserConsumer } from "../contexts/UserContext";
+import { UserConsumer, withUser } from "../contexts/UserContext";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -36,10 +36,13 @@ class LoginForm extends React.Component {
 }
 // 로그인폼 컴포넌트 사용법가 똑같다.?
 // 로그인폼에 props를 똑같이 넣음?
-export default props => {
-  return (
-    <UserConsumer>
-      {({ login }) => <LoginForm {...props} login={login} />}
-    </UserConsumer>
-  );
-};
+// UserConsumer를 LoginForm 에 둘러 쌈으로써 로그인폼 내부 안에서 사용 만이 아니라 전체적으로 감싸서 밖으로 hendleSubmit을 놓을수 있어서 ??? 
+// UserContext withUser 함수로 변경 
+// export default props => {
+//   return (
+//     <UserConsumer>
+//       {({ login }) => <LoginForm {...props} login={login} />}
+//     </UserConsumer>
+//   );
+// };
+export default withUser(LoginForm)

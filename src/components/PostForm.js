@@ -9,7 +9,7 @@ export default class PostForm extends Component {
     // 객체 리터럴에서 표현식이 대괄호 안에서 그대로 적용 
     // 표현식에 결과값을 사용 하고 싶어서 [] 그값에 문자열을 사용 
     const titleClass = classNames(s.titleInput, {
-      [s.editing] : editing
+      [s.editing]: editing
     })
     return (
       <div>

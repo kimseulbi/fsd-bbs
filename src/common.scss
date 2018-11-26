@@ -1,0 +1,26 @@
+$main-color: green;
+$sub-color: red;
+$main-border: 1px solid silver;
+
+@mixin common-border {
+    border: $main-border;
+}
+
+@mixin desktop {
+    @media screen and (min-width:768px){
+        @content
+    }
+}
+
+@mixin mobile {
+    @media screen and (max-width: 768px){
+        @content
+    }
+}
+
+// @content에 들어감. @content는 빈칸 역활을 함 
+// 모바일 버전부터 만들어주는게 좋다
+// @include desktop{
+//     color: red;
+//     border:  2px solid white;
+// }

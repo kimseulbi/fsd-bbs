@@ -4,6 +4,10 @@ import classNames from "classnames";
 // 새글, 수정 하는 폼
 // defaultValue에 다른 값을 또 넣어주지 않도록 주의
 export default class PostForm extends Component {
+  static defaultProps = {
+      // true가 주어지면, 편집 모드 스타일이 적용됨
+      editing: false
+  }
   render() {
     const { editing } = this.props
     // 객체 리터럴에서 표현식이 대괄호 안에서 그대로 적용 
@@ -23,7 +27,3 @@ export default class PostForm extends Component {
   }
 }
 
-PostForm.defaultProps = {
-  // true가 주어지면, 편집 모드 스타일이 적용됨
-  editing: false
-};

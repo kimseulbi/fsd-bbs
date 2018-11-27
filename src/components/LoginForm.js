@@ -3,6 +3,15 @@ import { UserConsumer, withUser } from "../contexts/UserContext";
 import { Form } from "semantic-ui-react";
 
 class LoginForm extends React.Component {
+  // 컴포넌트명세서 처럼 사용 할수 있음 -> 기본값으로 적용 됨
+  static defaultProps = {
+    // 사용자가 로그인 폼을 전송했을 때 호출되는 함수
+    // username과 password 인수를 받음
+    login: (username, password) => {},
+    // 회원 가입 버튼을 눌렀을 때 호출되는 함수
+    // 함수를 반드시 넘겨줘야함
+    onRegister: null
+  }
   constructor(props) {
     super(props);
     // const username = e.target.elements.username.value
@@ -35,15 +44,4 @@ class LoginForm extends React.Component {
       </React.Fragment>;
   }
 }
-// 로그인폼 컴포넌트 사용법가 똑같다.?
-// 로그인폼에 props를 똑같이 넣음?
-// UserConsumer를 LoginForm 에 둘러 쌈으로써 로그인폼 내부 안에서 사용 만이 아니라 전체적으로 감싸서 밖으로 hendleSubmit을 놓을수 있어서 ???
-// UserContext withUser 함수로 변경
-// export default props => {
-//   return (
-//     <UserConsumer>
-//       {({ login }) => <LoginForm {...props} login={login} />}
-//     </UserConsumer>
-//   );
-// };
 export default withUser(LoginForm);

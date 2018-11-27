@@ -22,3 +22,8 @@ export default class PostForm extends Component {
     );
   }
 }
+
+PostForm.defaultProps = {
+  // true가 주어지면, 편집 모드 스타일이 적용됨
+  editing: false
+};
